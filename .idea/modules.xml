@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CustomerApp/CustomerApp.iml" filepath="$PROJECT_DIR$/CustomerApp/CustomerApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/LabA2020_2.iml" filepath="$PROJECT_DIR$/.idea/LabA2020_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RestaurantApp/RestaurantApp.iml" filepath="$PROJECT_DIR$/RestaurantApp/RestaurantApp.iml" />
     </modules>
   </component>
 </project>

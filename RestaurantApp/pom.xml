@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>RestaurantApp</groupId>
-    <artifactId>RestaurantApp</artifactId>
+    <groupId>ua.pp.anla.laboratory</groupId>
+    <artifactId>restaurantapp</artifactId>
 
 
 </project>

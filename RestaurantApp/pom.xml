@@ -11,6 +11,44 @@
 
     <groupId>brainscratch.com</groupId>
     <artifactId>restaurantapp</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>Restaurant.jar</packaging>
+
+
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>copy-dependencies</id>
+                <phase>prepare-package</phase>
+                <goals>
+                    <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>
+                        Users/manuelmartorana/Documents/githubmaven/LabA2020_2/libs
+                    </outputDirectory>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                    <classpathPrefix>libs/</classpathPrefix>
+                    <mainClass>
+                        com.brainscratch.laboratory.Customer
+                    </mainClass>
+                </manifest>
+            </archive>
+        </configuration>
+    </plugin>
 
 
 </project>

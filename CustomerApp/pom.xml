@@ -7,10 +7,16 @@
         <groupId>LabA2020Maven</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+
+    <modelVersion>4.0.0</modelVersion>
     <groupId>brainscratch.com</groupId>
     <artifactId>customersapp</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+
 
 
 </project>
+

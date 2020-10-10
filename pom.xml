@@ -5,10 +5,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>brainscratch.com</groupId>
+    <groupId>com.brainscratch</groupId>
     <artifactId>laboratory</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>RestaurantApp</module>
         <module>CustomerApp</module>

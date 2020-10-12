@@ -4,5 +4,4 @@
 laboratory.iml
 restaurantapp.iml
 customersapp.iml
-customersapp-0.1.0-SNAPSHOT.jar
-restaurantapp-1.0-SNAPSHOT.jar
+!*.jar

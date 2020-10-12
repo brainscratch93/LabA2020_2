@@ -1,4 +1,4 @@
-package com.brainscratch.laboratory;
+package com.brainscratch.laboratory.restaurantapp;
 
 public class Restaurant {
     public static void main(String[] args) {

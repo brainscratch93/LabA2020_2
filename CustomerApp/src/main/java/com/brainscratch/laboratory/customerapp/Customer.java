@@ -10,6 +10,7 @@ public class Customer {
     private String nickname;
     private String password;
 
+
     public String getName() {
         return name;
     }

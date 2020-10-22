@@ -55,7 +55,7 @@
                         <addClasspath>true</addClasspath>
                         <classpathPrefix>libs/</classpathPrefix>
                         <mainClass>
-                            com.brainscratch.laboratory.customerapp.Customer
+                            com.brainscratch.laboratory.customerapp.models.Customer
                         </mainClass>
                     </manifest>
                 </archive>
@@ -75,7 +75,7 @@
                         <archive>
                             <manifest>
                                 <mainClass>
-                                    com.brainscratch.laboratory.customerapp.Customer
+                                    com.brainscratch.laboratory.customerapp.models.Customer
                                 </mainClass>
                             </manifest>
                         </archive>

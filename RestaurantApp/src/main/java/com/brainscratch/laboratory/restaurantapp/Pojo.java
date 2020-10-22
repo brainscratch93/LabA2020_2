@@ -1,5 +1,7 @@
 package com.brainscratch.laboratory.restaurantapp;
 
+import com.brainscratch.laboratory.restaurantapp.models.Restaurant;
+
 public class Pojo {
     public static void main(String[] args) {
 

@@ -1,4 +1,4 @@
-package com.brainscratch.laboratory.restaurantapp;
+package com.brainscratch.laboratory.restaurantapp.models;
 
 public class Restaurant {
     private String name;

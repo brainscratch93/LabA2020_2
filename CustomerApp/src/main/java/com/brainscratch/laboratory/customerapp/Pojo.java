@@ -1,5 +1,7 @@
 package com.brainscratch.laboratory.customerapp;
 
+import com.brainscratch.laboratory.customerapp.models.Customer;
+
 public class Pojo {
     public static void main(String[] args) {
         Customer c1 = new Customer();

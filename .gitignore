@@ -1,7 +1,5 @@
 .idea/
 .idea
 .idea/*
-laboratory.iml
-restaurantapp.iml
-customersapp.iml
 !*.jar
+!*.iml

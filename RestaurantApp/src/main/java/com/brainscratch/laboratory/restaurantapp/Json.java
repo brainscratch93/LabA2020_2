@@ -1,5 +1,6 @@
 package com.brainscratch.laboratory.restaurantapp;
 
+import com.brainscratch.laboratory.restaurantapp.models.Restaurant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;

@@ -1,12 +1,12 @@
 package com.brainscratch.laboratory.customerapp;
 
+import com.brainscratch.laboratory.customerapp.models.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.File;
 import java.io.IOException;
 
-public class Json {
-    public static void main(String[] args) {
-
+public class CustomerFileProcessor {
         ObjectMapper mapper = new ObjectMapper();
 
         Customer customer = createCustomer();
@@ -26,9 +26,9 @@ public class Json {
 
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
-
     private static Customer createCustomer() {
         Customer customer = new Customer();
 
@@ -42,4 +42,5 @@ public class Json {
 
         return customer;
     }
+}
 }

@@ -1,4 +1,4 @@
-package com.brainscratch.laboratory.customerapp;
+package com.brainscratch.laboratory.customerapp.models;
 
 public class Customer {
 
@@ -65,5 +65,26 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setName() {
+    }
+
+    public void setLastName() {
+    }
+
+    public void setCity() {
+    }
+
+    public void setResidenceInitials() {
+    }
+
+    public void setEmail() {
+    }
+
+    public void setPassword() {
+    }
+
+    public void setNickname() {
     }
 }

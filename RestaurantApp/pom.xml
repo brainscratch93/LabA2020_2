@@ -52,7 +52,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                com.brainscratch.laboratory.restaurantapp.Restaurant
+                                com.brainscratch.laboratory.restaurantapp.models.Restaurant
                             </mainClass>
                         </manifest>
                     </archive>

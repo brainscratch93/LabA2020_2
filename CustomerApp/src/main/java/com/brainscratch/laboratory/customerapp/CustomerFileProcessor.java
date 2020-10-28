@@ -2,45 +2,84 @@ package com.brainscratch.laboratory.customerapp;
 
 import com.brainscratch.laboratory.customerapp.models.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class CustomerFileProcessor {
+
+    public static CustomerList getAll() {
         ObjectMapper mapper = new ObjectMapper();
 
-        Customer customer = createCustomer();
-
         try {
+            File json = Paths.get("./customers.json").toFile();
+            if(!json.exists()) {
+                json.createNewFile();
+            }
 
-            // Java objects to JSON file
-            mapper.writeValue(new File("c:\\test\\customer.json"), customer);
-
-            // Java objects to JSON string - compact-print
-            String jsonString = mapper.writeValueAsString(customer);
-
-            System.out.println(jsonString);
-            // Java objects to JSON string - pretty-print
-            String jsonInString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(customer);
-            System.out.println(jsonInString2);
-
+            try {
+                CustomerList customers = mapper.readValue(json, CustomerList.class);
+                return customers;
+            } catch (MismatchedInputException e) {
+                return new CustomerList();
+            }
         } catch (IOException e) {
-            e.printStackTrace();
-
+            System.err.println(e);
+            return null;
         }
     }
-    private static Customer createCustomer() {
-        Customer customer = new Customer();
 
-        customer.setName("Alan");
-        customer.setLastName("Brit");
-        customer.setCity("Rescaldina");
-        customer.setResidenceInitials("MI");
-        customer.setEmail("illoallo@gmail.com");
-        customer.setNickname("illoallo");
-        customer.setPassword("...");
+    public static void save(CustomerList customers) {
+        ObjectMapper mapper = new ObjectMapper();
 
-        return customer;
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./customers.json").toFile(), customers);
+        } catch (IOException e) {
+            throw new IllegalStateException("Something went wrong during JSON updating", e);
+        }
     }
-}
+
+    public static void add(Customer customer) {
+        CustomerList customers = getAll();
+
+        customers.getCustomers().add(customer);
+
+        save(customers);
+    }
+
+    public static void update(Customer customer) {
+        CustomerList customers = getAll();
+
+        List<Customer> data = customers.getCustomers();
+        for(int i = 0; i < data.size() - 1; i++ ) {
+            if(customer.getPersonalId() == data.get(i).getPersonalId()) {
+                data.remove(i);
+                data.add(i, customer);
+
+                break;
+            }
+        }
+
+        save(customers);
+    }
+
+    public static void remove(Customer customer) {
+        CustomerList customers = getAll();
+
+        List<Customer> data = customers.getCustomers();
+        for(int i = 0; i < data.size() - 1; i++ ) {
+            if(customer.getPersonalId() == data.get(i).getPersonalId()) {
+                data.remove(i);
+
+                break;
+            }
+        }
+
+        save(customers);
+    }
+
 }

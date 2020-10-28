@@ -1,5 +1,7 @@
 package com.brainscratch.laboratory.customerapp.models;
 
+import java.util.Arrays;
+
 public class Customer {
 
     private String name;
@@ -9,82 +11,115 @@ public class Customer {
     private String email;
     private String nickname;
     private String password;
+    private int personalId;
+    private boolean isActive;
+    private String[] data;
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public Customer setActive(boolean active) {
+        isActive = active;
+        return this;
+    }
+
+    public String[] getData() {
+        return data;
+    }
+
+    public Customer setData(String[] data) {
+        this.data = data;
+        return this;
+    }
+
+
+    public int getPersonalId() {
+        return personalId;
+    }
+
+    public Customer setPersonalId(int personalId) {
+        this.personalId = personalId;
+        return this;
+
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Customer setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public Customer setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public String setCity(String city) {
         this.city = city;
+        return city;
     }
 
     public String getResidenceInitials() {
         return residenceInitials;
     }
 
-    public void setResidenceInitials(String residenceInitials) {
+    public Customer setResidenceInitials(String residenceInitials) {
         this.residenceInitials = residenceInitials;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public Customer setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    public Customer setNickname(String nickname) {
         this.nickname = nickname;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public Customer setPassword(String password) {
         this.password = password;
+        return this;
     }
 
-    public void setName() {
-    }
-
-    public void setLastName() {
-    }
-
-    public void setCity() {
-    }
-
-    public void setResidenceInitials() {
-    }
-
-    public void setEmail() {
-    }
-
-    public void setPassword() {
-    }
-
-    public void setNickname() {
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + personalId +
+                ", name='" + name + '\'' +
+                ", surname='" + lastName + '\'' +
+                ", city=" + city +
+                ", residenceInitials=" + residenceInitials +
+                ", email=" + email +
+                ", nickname=" + nickname +
+                ", password=" + password +
+                ", isActive=" + isActive + '\'' +
+                ", data=" + Arrays.toString(data) +
+                '}';
     }
 }

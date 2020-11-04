@@ -17,7 +17,7 @@ public class CustomerFileProcessor {
 
         try {
             File json = Paths.get("./customers.json").toFile();
-            if(!json.exists()) {
+            if (!json.exists()) {
                 json.createNewFile();
             }
 
@@ -55,8 +55,8 @@ public class CustomerFileProcessor {
         CustomerList customers = getAll();
 
         List<Customer> data = customers.getCustomers();
-        for(int i = 0; i < data.size() - 1; i++ ) {
-            if(customer.getPersonalId() == data.get(i).getPersonalId()) {
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (customer.getId() == data.get(i).getId()) {
                 data.remove(i);
                 data.add(i, customer);
 
@@ -71,8 +71,8 @@ public class CustomerFileProcessor {
         CustomerList customers = getAll();
 
         List<Customer> data = customers.getCustomers();
-        for(int i = 0; i < data.size() - 1; i++ ) {
-            if(customer.getPersonalId() == data.get(i).getPersonalId()) {
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (customer.getId() == data.get(i).getId()) {
                 data.remove(i);
 
                 break;
@@ -82,4 +82,16 @@ public class CustomerFileProcessor {
         save(customers);
     }
 
+    public static boolean checkCredentials(String login , String password) {
+        CustomerList customers = getAll();
+        List<Customer> data = customers.getCustomers();
+        for (int i = 0; i < data.size() - 1; i++)
+            if (login.equals(data.get(i).getNickname())  && password.equals(data.get(i).getPassword())) {
+                return true;
+            }
+        return false;
+
+    }
+
 }
+

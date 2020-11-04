@@ -1,8 +1,8 @@
 package com.brainscratch.laboratory.customerapp;
 
 import com.brainscratch.laboratory.customerapp.models.Customer;
+
 import java.io.IOException;
-import java.util.Arrays;
 
 public class CustomerApp {
 
@@ -14,11 +14,9 @@ public class CustomerApp {
         customer1.setCity("Rescaldina");
         customer1.setResidenceInitials("MI");
         customer1.setEmail("illoallo@aol.com");
-        customer1.setActive(true);
         customer1.setNickname("illoallo");
         customer1.setPassword("allo93");
-        customer1.setPersonalId(1);
-        customer1.setData((String[]) Arrays.asList("test 1", "test 2").toArray());
+        customer1.setId(1);
 
         Customer customer2 = new Customer();
         customer2.setName("Matteo");
@@ -26,11 +24,9 @@ public class CustomerApp {
         customer2.setCity("Legnano");
         customer2.setResidenceInitials("MI");
         customer2.setEmail("matteom@outlook.com");
-        customer2.setActive(true);
         customer2.setNickname("ita.mattix");
         customer2.setPassword("125677");
-        customer2.setPersonalId(2);
-        customer2.setData((String[])Arrays.asList("developer 1", "qa 2").toArray());
+        customer2.setId(2);
 
 
         CustomerFileProcessor processor = new CustomerFileProcessor();

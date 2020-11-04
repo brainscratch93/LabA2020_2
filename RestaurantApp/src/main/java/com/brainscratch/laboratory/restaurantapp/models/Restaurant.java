@@ -1,34 +1,46 @@
 package com.brainscratch.laboratory.restaurantapp.models;
 
-import java.util.Arrays;
-
 public class Restaurant {
+
+    private String nickName;
+    private String password;
     private String name;
     private String address;
     private int phoneNumber;
     private String website;
     private String type;
-    private int id;
-    private String[] data;
 
-    public int getid() {
+    public int getId() {
         return id;
     }
 
-    public Restaurant setid(int id) {
+    public void setId(int id) {
         this.id = id;
-        return this;
+    }
+
+    private int id;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 
-    public String[] getData() {
-        return data;
-    }
-
-    public Restaurant setData(String[] data) {
-        this.data = data;
-        return this;
-    }
 
 
     public String getName() {
@@ -85,7 +97,6 @@ public class Restaurant {
                 ", website=" + website +
                 ", type=" + type +
                 "id=" + id +'\'' +
-                ", data=" + Arrays.toString(data) +
                 '}';
     }
 }

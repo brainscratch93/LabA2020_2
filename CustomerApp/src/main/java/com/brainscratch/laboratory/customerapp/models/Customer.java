@@ -1,7 +1,5 @@
 package com.brainscratch.laboratory.customerapp.models;
 
-import java.util.Arrays;
-
 public class Customer {
 
     private String name;
@@ -11,38 +9,21 @@ public class Customer {
     private String email;
     private String nickname;
     private String password;
-    private int personalId;
-    private boolean isActive;
-    private String[] data;
+    private int id;
 
-    public boolean isActive() {
-        return isActive;
+    public int getId() {
+        return id;
     }
 
-    public Customer setActive(boolean active) {
-        isActive = active;
-        return this;
-    }
-
-    public String[] getData() {
-        return data;
-    }
-
-    public Customer setData(String[] data) {
-        this.data = data;
-        return this;
+    public void setId(int id) {
+        this.id = id;
     }
 
 
-    public int getPersonalId() {
-        return personalId;
-    }
 
-    public Customer setPersonalId(int personalId) {
-        this.personalId = personalId;
-        return this;
 
-    }
+
+
 
     public String getName() {
         return name;
@@ -110,16 +91,14 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + personalId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + lastName + '\'' +
                 ", city=" + city +
                 ", residenceInitials=" + residenceInitials +
                 ", email=" + email +
                 ", nickname=" + nickname +
-                ", password=" + password +
-                ", isActive=" + isActive + '\'' +
-                ", data=" + Arrays.toString(data) +
+                ", password=" + password + '\'' +
                 '}';
     }
 }

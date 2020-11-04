@@ -54,7 +54,7 @@ public class RestaurantFileProcessor {
 
         List<Restaurant> data = restaurants.getRestaurants();
         for(int i = 0; i < data.size() - 1; i++ ) {
-            if(restaurant.getid() == data.get(i).getid()) {
+            if(restaurant.getId() == data.get(i).getId()) {
                 data.remove(i);
                 data.add(i, restaurant);
 
@@ -65,5 +65,30 @@ public class RestaurantFileProcessor {
         save(restaurants);
     }
 
+    public static void remove(Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+
+        List<Restaurant> data = restaurants.getRestaurants();
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (restaurant.getId() == data.get(i).getId()) {
+                data.remove(i);
+
+                break;
+            }
+        }
+
+        save(restaurants);
+    }
+
+    public static boolean checkCredentials(String login , String password) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        for (int i = 0; i < data.size() - 1; i++)
+            if (login.equals(data.get(i).getNickName())  && password.equals(data.get(i).getPassword())) {
+                return true;
+            }
+        return false;
+
+    }
 
 }

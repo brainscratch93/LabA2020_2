@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantFileProcessor {
@@ -15,7 +16,7 @@ public class RestaurantFileProcessor {
 
         try {
             File json = Paths.get("./restaurants.json").toFile();
-            if(!json.exists()) {
+            if (!json.exists()) {
                 json.createNewFile();
             }
 
@@ -53,8 +54,8 @@ public class RestaurantFileProcessor {
         RestaurantList restaurants = getAll();
 
         List<Restaurant> data = restaurants.getRestaurants();
-        for(int i = 0; i < data.size() - 1; i++ ) {
-            if(restaurant.getId() == data.get(i).getId()) {
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (restaurant.getId() == data.get(i).getId()) {
                 data.remove(i);
                 data.add(i, restaurant);
 
@@ -80,14 +81,98 @@ public class RestaurantFileProcessor {
         save(restaurants);
     }
 
-    public static boolean checkCredentials(String login , String password) {
+    public static List<Restaurant> searchByMunicipality(String municipalityName) {
         RestaurantList restaurants = getAll();
         List<Restaurant> data = restaurants.getRestaurants();
-        for (int i = 0; i < data.size() - 1; i++)
-            if (login.equals(data.get(i).getNickName())  && password.equals(data.get(i).getPassword())) {
-                return true;
+        List<Restaurant> result = new ArrayList<>();
+
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (data.get(i).getAddress().contains(municipalityName)) {
+                result.add(data.get(i));
             }
-        return false;
+        }
+        return result;
+    }
+
+    public static List<Restaurant> searchByType(Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> result = new ArrayList<>();
+
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (restaurant.getType() == data.get(i).getType()) {
+                result.add(data.get(i));
+            }
+        }
+        return result;
+    }
+
+    public static List<Restaurant> searchByName(Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> result = new ArrayList<>();
+
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (restaurant.getName() == data.get(i).getName()) {
+                result.add(data.get(i));
+            }
+        }
+        return result;
+    }
+
+    public static List<Restaurant> searchByMunicipalityAndType(String municipalityName, Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> result = new ArrayList<>();
+
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (data.get(i).getAddress().contains(municipalityName) & restaurant.getType() == data.get(i).getType()) {
+                result.add(data.get(i));
+            }
+        }
+        return result;
+    }
+
+    public static List<Restaurant> selectRestaurant(Restaurant restaurant, String municipalityName) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> list = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (restaurant.getName() == data.get(i).getName() | data.get(i).getAddress().contains(municipalityName) & restaurant.getType() == data.get(i).getType())
+                System.out.println((i + 1) + " - " + list.get(i).getName());
+        }
+
+        return list;
+    }
+
+    public static List<Restaurant> getRestaurantInfo(Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> list = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+
+            restaurant.getId();
+            restaurant.getName();
+        }
+
+        return list;
+
+    }
+
+    public static void viewRestaurantInfo(Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> list = new ArrayList<>();
+        String star = "***********";
+
+        for (int i = 0; i < list.size(); i++) {
+
+            System.out.println(star);
+            System.out.println("*" + getRestaurantInfo(restaurant) + "*");
+            System.out.println(star);
+
+        }
+
 
     }
 

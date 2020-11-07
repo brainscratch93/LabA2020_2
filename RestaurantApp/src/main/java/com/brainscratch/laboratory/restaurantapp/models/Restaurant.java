@@ -2,8 +2,6 @@ package com.brainscratch.laboratory.restaurantapp.models;
 
 public class Restaurant {
 
-    private String nickName;
-    private String password;
     private String name;
     private String address;
     private int phoneNumber;

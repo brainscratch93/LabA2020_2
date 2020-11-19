@@ -2,11 +2,13 @@ package com.brainscratch.laboratory.restaurantapp.models;
 
 public class Restaurant {
 
+    private int id;
     private String name;
     private String address;
     private int phoneNumber;
     private String website;
     private String type;
+
 
     public int getId() {
         return id;
@@ -15,29 +17,6 @@ public class Restaurant {
     public void setId(int id) {
         this.id = id;
     }
-
-    private int id;
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
 
 
 

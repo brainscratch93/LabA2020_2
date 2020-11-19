@@ -120,6 +120,19 @@ public class RestaurantFileProcessor {
         return result;
     }
 
+    public static List<Restaurant> searchById(Restaurant restaurant) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> result = new ArrayList<>();
+
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (restaurant.getId() == data.get(i).getId()) {
+                result.add(data.get(i));
+            }
+        }
+        return result;
+    }
+
     public static List<Restaurant> searchByMunicipalityAndType(String municipalityName, Restaurant restaurant) {
         RestaurantList restaurants = getAll();
         List<Restaurant> data = restaurants.getRestaurants();

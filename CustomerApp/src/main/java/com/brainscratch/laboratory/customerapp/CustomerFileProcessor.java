@@ -4,11 +4,11 @@ import com.brainscratch.laboratory.customerapp.models.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Scanner;
 
 public class CustomerFileProcessor {
 
@@ -82,16 +82,39 @@ public class CustomerFileProcessor {
         save(customers);
     }
 
-    public static boolean checkCredentials(String login , String password) {
+    public static boolean checkCredentials(String login, String password) {
         CustomerList customers = getAll();
         List<Customer> data = customers.getCustomers();
         for (int i = 0; i < data.size() - 1; i++)
-            if (login.equals(data.get(i).getNickname())  && password.equals(data.get(i).getPassword())) {
+            if (login.equals(data.get(i).getNickname()) && password.equals(data.get(i).getPassword())) {
                 return true;
             }
         return false;
 
     }
 
+
+    public static Review judge(int authorId) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a value from 1 to 5");
+        int number = scanner.nextInt();
+        System.out.println("your rate is : " + number);
+
+        System.out.println("write a review");
+        String comment = scanner.nextLine();
+        char maxLength = 256;
+
+        if (comment.length() > maxLength) {
+            comment = comment.substring(0, maxLength);
+        }
+
+        Review review = new Review();
+        review.setRating(number);
+        review.setComment(comment);
+        review.setAuthorId(authorId);
+        return review;
+
+
+    }
 }
 

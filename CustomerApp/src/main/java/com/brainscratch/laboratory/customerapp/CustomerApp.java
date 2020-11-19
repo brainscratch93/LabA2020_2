@@ -32,6 +32,7 @@ public class CustomerApp {
         CustomerFileProcessor processor = new CustomerFileProcessor();
 
 
+
         System.out.println(CustomerFileProcessor.getAll());// should show empty collection or if file is not empty - shoe content
 
         CustomerFileProcessor.add(customer1);

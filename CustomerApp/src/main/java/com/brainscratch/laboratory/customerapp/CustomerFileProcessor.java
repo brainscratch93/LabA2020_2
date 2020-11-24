@@ -1,6 +1,7 @@
 package com.brainscratch.laboratory.customerapp;
 
 import com.brainscratch.laboratory.customerapp.models.Customer;
+import com.brainscratch.laboratory.restaurantapp.models.Review;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
@@ -57,7 +58,6 @@ public class CustomerFileProcessor {
         List<Customer> data = customers.getCustomers();
         for (int i = 0; i < data.size() - 1; i++) {
             if (customer.getId() == data.get(i).getId()) {
-                data.remove(i);
                 data.add(i, customer);
 
                 break;
@@ -112,9 +112,14 @@ public class CustomerFileProcessor {
         review.setRating(number);
         review.setComment(comment);
         review.setAuthorId(authorId);
-        return review;
+
+        Review reviewComment = new Review(review);
+        return reviewComment;
 
 
     }
+
+
 }
+
 

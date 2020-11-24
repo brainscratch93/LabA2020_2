@@ -1,16 +1,13 @@
-package com.brainscratch.laboratory.customerapp;
-
-
-import com.brainscratch.laboratory.customerapp.models.Customer;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.brainscratch.laboratory.restaurantapp.models;
 
 public class Review {
     int rating;
     String comment;
     String author;
     int authorId;
+
+    public Review(Review review) {
+    }
 
     public int getAuthorId() {
         return authorId;
@@ -46,13 +43,4 @@ public class Review {
         this.author = author;
     }
 
-
-
-
-
-    public String authorName (Customer customer) {
-           author = customer.getNickname();
-
-        }
-
-    }
+}

@@ -1,6 +1,7 @@
 package com.brainscratch.laboratory.restaurantapp;
 
 import com.brainscratch.laboratory.restaurantapp.models.Restaurant;
+import com.brainscratch.laboratory.restaurantapp.models.Review;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
@@ -56,7 +57,6 @@ public class RestaurantFileProcessor {
         List<Restaurant> data = restaurants.getRestaurants();
         for (int i = 0; i < data.size() - 1; i++) {
             if (restaurant.getId() == data.get(i).getId()) {
-                data.remove(i);
                 data.add(i, restaurant);
 
                 break;
@@ -186,6 +186,25 @@ public class RestaurantFileProcessor {
 
         }
 
+    }
+
+    public static void saveReview(Restaurant restaurant, Review review) {
+        RestaurantList restaurants = getAll();
+        List<Restaurant> data = restaurants.getRestaurants();
+        List<Restaurant> result = new ArrayList<>();
+
+        for (int i = 0; i < data.size() - 1; i++) {
+            if (restaurant.getId() == data.get(i).getId()) {
+                result.add(data.get(i));
+
+                break;
+            }
+
+            restaurant.getReviews().add(review);
+
+        }
+
+        save(restaurants);
 
     }
 

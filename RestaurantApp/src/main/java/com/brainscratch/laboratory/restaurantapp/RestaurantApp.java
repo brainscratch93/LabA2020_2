@@ -2,6 +2,8 @@ package com.brainscratch.laboratory.restaurantapp;
 
 import com.brainscratch.laboratory.restaurantapp.models.Restaurant;
 
+import java.util.Scanner;
+
 public class RestaurantApp {
     public static void main(String[] args) {
 
@@ -29,6 +31,45 @@ public class RestaurantApp {
 
         RestaurantFileProcessor processor = new RestaurantFileProcessor();
 
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print(" Welcome to Restaurant Manager, do you want to add a new restaurant? ");
 
+            String answer;
+            boolean yesNo;
+
+            System.out.println("yes/no");
+            while (true) {
+                answer = scanner.nextLine().trim().toLowerCase();
+                if (answer.equals("yes")) {
+                    yesNo = true;
+                    break;
+                } else if (answer.equals("no")) {
+                    yesNo = false;
+                    break;
+                } else {
+                    break;
+                }
+            }
+
+            if(yesNo == true) {
+                Registration.main();
+                // miss recieve data from user
+                System.out.println("do you want to add another restaurant? ");
+                System.out.println("yes/no");
+
+                while (true) {
+                    answer = scanner.nextLine().trim().toLowerCase();
+                    if (answer.equals("yes")) {
+                        yesNo = true;
+                        break;
+                    } else if (answer.equals("no")) {
+                        yesNo = false;
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -4,22 +4,15 @@ import com.brainscratch.laboratory.restaurantapp.models.Restaurant;
 
 import java.util.Scanner;
 
-public class Registration {
-
-    static Restaurant restaurant = new Restaurant();
+public class RegistrationDialogue {
 
 
-    public static void main(String[] args) {
+
+    public void start() {
+
+        Restaurant restaurant = new Restaurant();
 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print(" Enter nickname => ");
-            String nickName = scanner.nextLine();
-            restaurant.setNickName(nickName);
-
-            System.out.print(" Enter password => ");
-            String password = scanner.nextLine();
-            restaurant.setPassword(password);
-
             System.out.print(" Enter name => ");
             String name = scanner.nextLine();
             restaurant.setName(name);

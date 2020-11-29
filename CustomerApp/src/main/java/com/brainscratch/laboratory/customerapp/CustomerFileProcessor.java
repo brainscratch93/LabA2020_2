@@ -82,14 +82,14 @@ public class CustomerFileProcessor {
         save(customers);
     }
 
-    public static boolean checkCredentials(String login, String password) {
+    public static int checkCredentials(String login, String password) {
         CustomerList customers = getAll();
         List<Customer> data = customers.getCustomers();
         for (int i = 0; i < data.size() - 1; i++)
             if (login.equals(data.get(i).getNickname()) && password.equals(data.get(i).getPassword())) {
-                return true;
+                return data.get(i).getId();
             }
-        return false;
+        return -1;
 
     }
 

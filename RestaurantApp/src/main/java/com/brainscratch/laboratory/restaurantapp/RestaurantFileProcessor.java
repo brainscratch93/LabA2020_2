@@ -107,27 +107,27 @@ public class RestaurantFileProcessor {
         return result;
     }
 
-    public static List<Restaurant> searchByName(Restaurant restaurant) {
+    public static List<Restaurant> searchByName(String name) {
         RestaurantList restaurants = getAll();
         List<Restaurant> data = restaurants.getRestaurants();
         List<Restaurant> result = new ArrayList<>();
 
         for (int i = 0; i < data.size() - 1; i++) {
-            if (restaurant.getName() == data.get(i).getName()) {
+            if (name.equals(data.get(i).getName())) {
                 result.add(data.get(i));
             }
         }
         return result;
     }
 
-    public static List<Restaurant> searchById(Restaurant restaurant) {
+    public static Restaurant searchById(String restaurantID) {
         RestaurantList restaurants = getAll();
         List<Restaurant> data = restaurants.getRestaurants();
-        List<Restaurant> result = new ArrayList<>();
+        Restaurant result = null;
 
         for (int i = 0; i < data.size() - 1; i++) {
-            if (restaurant.getId() == data.get(i).getId()) {
-                result.add(data.get(i));
+            if (restaurantID.equals(data.get(i).getId())) {
+                return data.get(i);
             }
         }
         return result;
@@ -158,35 +158,16 @@ public class RestaurantFileProcessor {
         return list;
     }
 
-    public static List<Restaurant> getRestaurantInfo(Restaurant restaurant) {
-        RestaurantList restaurants = getAll();
-        List<Restaurant> data = restaurants.getRestaurants();
-        List<Restaurant> list = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-
-            restaurant.getId();
-            restaurant.getName();
-        }
-
-        return list;
-
-    }
-
     public static void viewRestaurantInfo(Restaurant restaurant) {
-        RestaurantList restaurants = getAll();
-        List<Restaurant> data = restaurants.getRestaurants();
-        List<Restaurant> list = new ArrayList<>();
         String star = "***********";
 
-        for (int i = 0; i < list.size(); i++) {
-
             System.out.println(star);
-            System.out.println("*" + getRestaurantInfo(restaurant) + "*");
+            System.out.println("* id : " + restaurant.getId() + "*");
+            System.out.println("* id : " + restaurant.getName() + "*");
             System.out.println(star);
 
         }
 
-    }
 
     public static void saveReview(Restaurant restaurant, Review review) {
         RestaurantList restaurants = getAll();

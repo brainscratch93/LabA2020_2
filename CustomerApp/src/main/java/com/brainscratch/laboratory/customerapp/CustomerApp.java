@@ -1,9 +1,7 @@
 package com.brainscratch.laboratory.customerapp;
 
-import com.brainscratch.laboratory.customerapp.models.Customer;
-import com.brainscratch.laboratory.restaurantapp.RestaurantApp;
+import com.brainscratch.laboratory.restaurantapp.Login;
 import com.brainscratch.laboratory.restaurantapp.RestaurantFileProcessor;
-import com.brainscratch.laboratory.restaurantapp.models.Restaurant;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,27 +9,6 @@ import java.util.Scanner;
 public class CustomerApp {
 
     public static void main(String[] args) throws IOException {
-
-        Customer customer1 = new Customer();
-        customer1.setName("Manuel");
-        customer1.setLastName("Martorana");
-        customer1.setCity("Rescaldina");
-        customer1.setResidenceInitials("MI");
-        customer1.setEmail("illoallo@aol.com");
-        customer1.setNickname("illoallo");
-        customer1.setPassword("allo93");
-        customer1.setId(1);
-
-        Customer customer2 = new Customer();
-        customer2.setName("Matteo");
-        customer2.setLastName("Martorana");
-        customer2.setCity("Legnano");
-        customer2.setResidenceInitials("MI");
-        customer2.setEmail("matteom@outlook.com");
-        customer2.setNickname("ita.mattix");
-        customer2.setPassword("125677");
-        customer2.setId(2);
-
 
         CustomerFileProcessor processor = new CustomerFileProcessor();
 
@@ -47,9 +24,9 @@ public class CustomerApp {
 
             int choice = scanner.nextInt();
             if (choice == 1) {
-                Registration.main(Customer customer1);
+                new Registration().start();
             } else if (choice == 2) {
-                Login.main();
+                new LoginDialogue().login();
             } else if (choice == 3) {
                 RestaurantFileProcessor.searchByMunicipality();
             } else if (choice == 4) {
@@ -61,26 +38,6 @@ public class CustomerApp {
             } else if (choice == 7) {
                 RestaurantFileProcessor.searchById();
             }
-
-
-
-
-
         }
-
-
-        System.out.println(CustomerFileProcessor.getAll());// should show empty collection or if file is not empty - shoe content
-
-        CustomerFileProcessor.add(customer1);
-        System.out.println(CustomerFileProcessor.getAll());// should show full collection with your customer1
-
-        CustomerFileProcessor.add(customer2);
-        System.out.println(CustomerFileProcessor.getAll());// should show full collection with your customer1 and customer 2
-
-        CustomerFileProcessor.remove(customer1);
-        System.out.println(CustomerFileProcessor.getAll());// should show full collection with your  customer 2
-        customer2.setName("new name");
-        CustomerFileProcessor.update(customer2);
-        System.out.println(CustomerFileProcessor.getAll());// should show full collection with your  customer 2 and name must be new.
     }
 }

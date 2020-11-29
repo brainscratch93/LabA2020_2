@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 public class Registration {
 
-    static Customer customer = new Customer();
+    public  void start() {
 
-
-    public static void main(String[] args) {
+     Customer customer = new Customer();
 
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.print(" Enter name => ");

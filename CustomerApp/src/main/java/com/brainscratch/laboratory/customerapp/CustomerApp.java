@@ -13,7 +13,7 @@ public class CustomerApp {
         try (Scanner scanner = new Scanner(System.in)) {
 
             System.out.print(" Welcome to Customer App, type one of the following numbers to proceed : ");
-            int userID = -1;
+            String userID = null;
             int choice = 0;
             while (choice != 8) {
                 System.out.println("1- Sign Up");

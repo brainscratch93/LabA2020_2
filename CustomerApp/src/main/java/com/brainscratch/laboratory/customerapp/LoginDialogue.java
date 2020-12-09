@@ -7,7 +7,7 @@ public class LoginDialogue {
     public LoginDialogue(Scanner scanner) {
         this.scanner = scanner;
     }
-    public int login() {
+    public String login() {
 
 
         System.out.println("Username:");
@@ -18,9 +18,9 @@ public class LoginDialogue {
         System.out.println("Password:");
         String password = scanner.nextLine();
 
-            int userID = CustomerFileProcessor.checkCredentials(username,password);
+            String userID = CustomerFileProcessor.checkCredentials(username,password);
 
-            if (userID != -1){
+            if (userID != null){
                 System.out.print("Login Successful");
                 return userID;
             } else {
@@ -29,7 +29,7 @@ public class LoginDialogue {
                 String userChoice = scanner.nextLine();
                 if(userChoice.equals("again")) {
                     return login();
-                } else return -1;
+                } else return null;
             }
         }
     }

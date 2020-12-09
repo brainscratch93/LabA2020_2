@@ -4,21 +4,12 @@ public class Review {
     int rating;
     String comment;
     String author;
-    int authorId;
 
     public Review(Review review) {
     }
 
     public Review() {
 
-    }
-
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
     }
 
 

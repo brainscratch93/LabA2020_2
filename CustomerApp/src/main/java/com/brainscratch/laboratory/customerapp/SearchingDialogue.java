@@ -9,22 +9,15 @@ import java.util.Scanner;
 
 public class SearchingDialogue {
 
-    public SearchingDialogue(int userID) {
-        if ((userID != -1)) {
-            this.isUserLogin = true;
-            this.userID = userID;
-        }
-    }
-
     private boolean isUserLogin = false;
-    private int userID;
+    private String userID;
 
     Scanner scanner;
 
 
-    public SearchingDialogue(Scanner scanner, int userID) {
+    public SearchingDialogue(Scanner scanner, String userID) {
         this.scanner = scanner;
-        if ((userID != -1)) {
+        if ((userID != null)) {
             this.isUserLogin = true;
             this.userID = userID;
         }
@@ -144,8 +137,8 @@ public class SearchingDialogue {
 
     public void searchByType() {
         System.out.println("Enter restaurant Type");
-        Scanner scanner = new Scanner(System.in);
         String restaurantType = scanner.nextLine();
+        restaurantType = scanner.nextLine();
         List<Restaurant> restaurants = RestaurantFileProcessor.searchByType(restaurantType);
 
         if (restaurants.isEmpty()) {

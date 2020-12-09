@@ -25,6 +25,7 @@ public class RestaurantFileProcessor {
                 RestaurantList restaurants = mapper.readValue(json, RestaurantList.class);
                 return restaurants;
             } catch (MismatchedInputException e) {
+                System.err.println(e);
                 return new RestaurantList();
             }
         } catch (IOException e) {
@@ -39,6 +40,7 @@ public class RestaurantFileProcessor {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./restaurants.json").toFile(), restaurants);
         } catch (IOException e) {
+            System.err.println(e);
             throw new IllegalStateException("Something went wrong during JSON updating", e);
         }
     }
@@ -62,8 +64,9 @@ public class RestaurantFileProcessor {
         RestaurantList restaurants = getAll();
 
         List<Restaurant> data = restaurants.getRestaurants();
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size() ; i++) {
             if (restaurant.getId() == data.get(i).getId()) {
+                data.remove(i);
                 data.add(i, restaurant);
 
                 break;
@@ -77,7 +80,7 @@ public class RestaurantFileProcessor {
         RestaurantList restaurants = getAll();
 
         List<Restaurant> data = restaurants.getRestaurants();
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size() ; i++) {
             if (restaurant.getId() == data.get(i).getId()) {
                 data.remove(i);
 
@@ -93,7 +96,7 @@ public class RestaurantFileProcessor {
         List<Restaurant> data = restaurants.getRestaurants();
         List<Restaurant> result = new ArrayList<>();
 
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size() ; i++) {
             if (data.get(i).getAddress().contains(municipalityName)) {
                 result.add(data.get(i));
             }
@@ -106,7 +109,7 @@ public class RestaurantFileProcessor {
         List<Restaurant> data = restaurants.getRestaurants();
         List<Restaurant> result = new ArrayList<>();
 
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (restaurantType.equals(data.get(i).getType())) {
                 result.add(data.get(i));
             }
@@ -119,7 +122,7 @@ public class RestaurantFileProcessor {
         List<Restaurant> data = restaurants.getRestaurants();
         List<Restaurant> result = new ArrayList<>();
 
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size() ; i++) {
             if (name.equals(data.get(i).getName())) {
                 result.add(data.get(i));
             }
@@ -131,7 +134,7 @@ public class RestaurantFileProcessor {
         RestaurantList restaurants = getAll();
         List<Restaurant> data = restaurants.getRestaurants();
 
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size(); i++) {
             if ((data.get(i).getId()) == restaurantID) {
                 return data.get(i);
             }
@@ -144,7 +147,7 @@ public class RestaurantFileProcessor {
         List<Restaurant> data = restaurants.getRestaurants();
         List<Restaurant> result = new ArrayList<>();
 
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (data.get(i).getAddress().contains(municipalityName) & restaurantType.equals(data.get(i).getType())) {
                 result.add(data.get(i));
             }
@@ -167,14 +170,27 @@ public class RestaurantFileProcessor {
 
     public static void viewRestaurantInfo(Restaurant restaurant) {
         String star = "***********";
+        String plus = "+++++++++++";
 
             System.out.println(star);
             System.out.println("* id : " + restaurant.getId() + "*");
-            System.out.println("* id : " + restaurant.getName() + "*");
-            System.out.println("* id : " + restaurant.getAddress() + "*");
-            System.out.println("* id : " + restaurant.getPhoneNumber() + "*");
-            System.out.println("* id : " + restaurant.getWebsite() + "*");
-            System.out.println("* id : " + restaurant.getType() + "*");
+            System.out.println("* name : " + restaurant.getName() + "*");
+            System.out.println("* address : " + restaurant.getAddress() + "*");
+            System.out.println("* phone number : " + restaurant.getPhoneNumber() + "*");
+            System.out.println("* website : " + restaurant.getWebsite() + "*");
+            System.out.println("* type : " + restaurant.getType() + "*");
+            System.out.println("* reviews : ");
+            if(restaurant.getReviews() == null || restaurant.getReviews().isEmpty()) {
+                System.out.println("*** there are no reviews ***");
+            } else {
+                for(Review review : restaurant.getReviews()) {
+                    System.out.println(plus);
+                    System.out.println("*** rating: " + review.getRating() + "***");
+                    System.out.println("*** comment: " + review.getComment() + "***");
+                    System.out.println("*** author: " + review.getAuthor() + "***");
+                    System.out.println(plus);
+                }
+            }
             System.out.println(star);
 
         }
@@ -185,7 +201,7 @@ public class RestaurantFileProcessor {
         List<Restaurant> data = restaurants.getRestaurants();
         List<Restaurant> result = new ArrayList<>();
 
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (restaurant.getId() == data.get(i).getId()) {
                 result.add(data.get(i));
 

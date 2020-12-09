@@ -89,19 +89,19 @@ public class CustomerFileProcessor {
         save(customers);
     }
 
-    public static int checkCredentials(String login, String password) {
+    public static String checkCredentials(String login, String password) {
         CustomerList customers = getAll();
         List<Customer> data = customers.getCustomers();
         for (int i = 0; i < data.size(); i++)
             if (login.equals(data.get(i).getNickname()) && password.equals(data.get(i).getPassword())) {
-                return data.get(i).getId();
+                return data.get(i).getName() + " " + data.get(i).getLastName();
             }
-        return -1;
+        return null;
 
     }
 
 
-    public static Review judge(int authorId) {
+    public static Review judge(String authorId) {
 
         String star = "***********";
         Scanner scanner = new Scanner(System.in);
@@ -123,8 +123,7 @@ public class CustomerFileProcessor {
         Review review = new Review();
         review.setRating(number);
         review.setComment(comment);
-        review.setAuthor();
-        review.setAuthorId(authorId);
+        review.setAuthor(authorId);
 
         System.out.println(star);
         return review;

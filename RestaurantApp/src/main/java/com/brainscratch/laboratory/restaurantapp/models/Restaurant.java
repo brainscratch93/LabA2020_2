@@ -7,7 +7,7 @@ public class Restaurant {
     private int id;
     private String name;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
     private String website;
     private String type;
 
@@ -18,8 +18,8 @@ public class Restaurant {
     public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
     }
-
     private ArrayList<Review> reviews = new ArrayList<Review>() {
+
 
         @Override
         public int size() {
@@ -135,7 +135,8 @@ public class Restaurant {
         public List<Review> subList(int fromIndex, int toIndex) {
             return null;
         }
-    }
+    };
+
 
 
     public int getId() {
@@ -166,11 +167,11 @@ public class Restaurant {
         return this;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public Restaurant setphoneNumber(int phoneNumber) {
+    public Restaurant setphoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }

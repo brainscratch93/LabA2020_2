@@ -6,13 +6,19 @@ import java.util.Scanner;
 
 public class Registration {
 
+
+    Scanner scanner;
+    public Registration(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
     public  void start() {
 
      Customer customer = new Customer();
 
-        try (Scanner scanner = new Scanner(System.in)) {
             System.out.print(" Enter name => ");
             String name = scanner.nextLine();
+            name = scanner.nextLine();
             customer.setName(name);
 
             System.out.print(" Enter lastName => ");
@@ -31,9 +37,19 @@ public class Registration {
             String email = scanner.nextLine();
             customer.setEmail(email);
 
-            System.out.print(" Enter nickname => ");
-            String nickName = scanner.nextLine();
-            customer.setNickname(nickName);
+
+            System.out.print(" Enter username => ");
+            String username = scanner.nextLine();
+        boolean usernameCheck = CustomerFileProcessor.checkUsername(username);
+
+        while (usernameCheck){
+                System.out.println("Username already taken, try again");
+                System.out.print(" Enter username => ");
+                username = scanner.nextLine();
+                usernameCheck = CustomerFileProcessor.checkUsername(username);
+
+            }
+            customer.setNickname(username);
 
             System.out.print(" Enter password => ");
             String password = scanner.nextLine();
@@ -43,7 +59,7 @@ public class Registration {
             int personalId = scanner.nextInt();
             customer.setId(personalId);
 
+            System.out.println("Registration Completed");
             CustomerFileProcessor.add(customer);
         }
     }
-}

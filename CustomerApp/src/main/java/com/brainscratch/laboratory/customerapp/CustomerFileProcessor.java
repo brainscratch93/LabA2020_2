@@ -46,6 +46,13 @@ public class CustomerFileProcessor {
 
     public static void add(Customer customer) {
         CustomerList customers = getAll();
+        int maxId = 0;
+        for (Customer customer1 : customers.getCustomers()) {
+            if (customer1.getId() > maxId) {
+                maxId = customer1.getId();
+            }
+        }
+        customer.setId(maxId + 1);
 
         customers.getCustomers().add(customer);
 
@@ -85,7 +92,7 @@ public class CustomerFileProcessor {
     public static int checkCredentials(String login, String password) {
         CustomerList customers = getAll();
         List<Customer> data = customers.getCustomers();
-        for (int i = 0; i < data.size() - 1; i++)
+        for (int i = 0; i < data.size(); i++)
             if (login.equals(data.get(i).getNickname()) && password.equals(data.get(i).getPassword())) {
                 return data.get(i).getId();
             }
@@ -95,13 +102,18 @@ public class CustomerFileProcessor {
 
 
     public static Review judge(int authorId) {
+
+        String star = "***********";
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a value from 1 to 5");
         int number = scanner.nextInt();
+
+        System.out.println(star);
         System.out.println("your rate is : " + number);
 
         System.out.println("write a review");
         String comment = scanner.nextLine();
+        comment = scanner.nextLine();
         char maxLength = 256;
 
         if (comment.length() > maxLength) {
@@ -111,15 +123,27 @@ public class CustomerFileProcessor {
         Review review = new Review();
         review.setRating(number);
         review.setComment(comment);
+        review.setAuthor();
         review.setAuthorId(authorId);
 
-        Review reviewComment = new Review(review);
-        return reviewComment;
-
+        System.out.println(star);
+        return review;
 
     }
 
 
+    public static boolean checkUsername(String username) {
+        boolean userCheck= false;
+        CustomerList customers = getAll();
+        List<Customer> data = customers.getCustomers();
+        for (int i = 0; i < data.size() - 1; i++)
+            if (username.equals(data.get(i).getNickname())) {
+                 userCheck = true;
+            }
+        return userCheck;
+
+    }
 }
+
 
 

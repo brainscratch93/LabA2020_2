@@ -7,7 +7,7 @@ public class Customer {
     private String city;
     private String residenceInitials;
     private String email;
-    private String nickname;
+    public String nickname;
     private String password;
     private int id;
 

@@ -9,6 +9,10 @@ public class Review {
     public Review(Review review) {
     }
 
+    public Review() {
+
+    }
+
     public int getAuthorId() {
         return authorId;
     }

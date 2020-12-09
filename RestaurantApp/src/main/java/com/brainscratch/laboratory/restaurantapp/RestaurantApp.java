@@ -8,17 +8,18 @@ public class RestaurantApp {
         RestaurantFileProcessor processor = new RestaurantFileProcessor();
 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print(" Welcome to Restaurant Manager, do you want to add a new restaurant? ");
+            System.out.print(" Welcome to Restaurant Manager");
 
             String answer;
             boolean yesNo;
 
-            System.out.println("yes/no");
             while (true) {
+                System.out.println("Do you want to add new restaurant?");
+                System.out.println("yes/no");
                 answer = scanner.nextLine().trim().toLowerCase();
                 if (answer.equals("yes")) {
                     yesNo = true;
-                    new RegistrationDialogue().start();
+                    new RegistrationDialogue(scanner).start(scanner);
                 } else if (answer.equals("no")) {
                     yesNo = false;
                     System.out.println("goodbye");
@@ -27,7 +28,6 @@ public class RestaurantApp {
                     System.out.println("you input incorrect value");
                 }
             }
-
 
         }
     }

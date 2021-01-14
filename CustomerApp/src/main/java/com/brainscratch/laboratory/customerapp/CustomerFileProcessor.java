@@ -14,14 +14,15 @@ import java.util.Scanner;
 public class CustomerFileProcessor {
 
     public static CustomerList getAll() {
+        // from java object to json and back
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            File json = Paths.get("./customers.json").toFile();
+            File json = Paths.get("./Users.json").toFile();
             if (!json.exists()) {
                 json.createNewFile();
             }
-
+        // from text to java object
             try {
                 CustomerList customers = mapper.readValue(json, CustomerList.class);
                 return customers;
@@ -35,57 +36,31 @@ public class CustomerFileProcessor {
     }
 
     public static void save(CustomerList customers) {
+        // from java object to json
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./customers.json").toFile(), customers);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./Users.json").toFile(), customers);
         } catch (IOException e) {
             throw new IllegalStateException("Something went wrong during JSON updating", e);
         }
     }
 
     public static void add(Customer customer) {
+        // read JSON file with all customers
         CustomerList customers = getAll();
+        // get maxId
         int maxId = 0;
         for (Customer customer1 : customers.getCustomers()) {
             if (customer1.getId() > maxId) {
                 maxId = customer1.getId();
             }
         }
+        // add new customer to the list
         customer.setId(maxId + 1);
 
         customers.getCustomers().add(customer);
-
-        save(customers);
-    }
-
-    public static void update(Customer customer) {
-        CustomerList customers = getAll();
-
-        List<Customer> data = customers.getCustomers();
-        for (int i = 0; i < data.size() - 1; i++) {
-            if (customer.getId() == data.get(i).getId()) {
-                data.add(i, customer);
-
-                break;
-            }
-        }
-
-        save(customers);
-    }
-
-    public static void remove(Customer customer) {
-        CustomerList customers = getAll();
-
-        List<Customer> data = customers.getCustomers();
-        for (int i = 0; i < data.size() - 1; i++) {
-            if (customer.getId() == data.get(i).getId()) {
-                data.remove(i);
-
-                break;
-            }
-        }
-
+        //save updated list to json
         save(customers);
     }
 

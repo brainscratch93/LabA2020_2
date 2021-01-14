@@ -51,15 +51,20 @@ public class SearchingDialogue {
                 System.out.println("enter restaurant ID");
                 int restaurantID = scanner.nextInt();
                 Restaurant restaurant = RestaurantFileProcessor.searchById(restaurantID);
-                Review review = CustomerFileProcessor.judge(userID);
-                restaurant.getReviews().add(review);
-                RestaurantFileProcessor.update(restaurant);
-            } else {
+                if (checkId(restaurants, restaurantID)) {
+                    Review review = CustomerFileProcessor.judge(userID);
+                    restaurant.getReviews().add(review);
+                    RestaurantFileProcessor.update(restaurant);
+                } else {
+                    System.out.println("selected number is not in the list");
+                    searchByName();
+                }
+            }
+            }else {
                 System.out.println("not logged in");
             }
 
         }
-    }
 
     public void searchByID() {
         System.out.println("Enter restaurant ID");
@@ -210,7 +215,16 @@ public class SearchingDialogue {
                 System.out.println("not logged in");
             }
 
+
         }
+    }
+
+    public boolean checkId(List<Restaurant> restaurants,int restaurantId ) {
+        for (Restaurant restaurant : restaurants) {
+            if(restaurant.getId() == restaurantId) {
+                return true;
+            }
+        } return false;
     }
 }
 

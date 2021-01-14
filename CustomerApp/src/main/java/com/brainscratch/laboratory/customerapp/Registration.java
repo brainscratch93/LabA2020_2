@@ -55,10 +55,6 @@ public class Registration {
             String password = scanner.nextLine();
             customer.setPassword(password);
 
-            System.out.print(" Enter Id => ");
-            int personalId = scanner.nextInt();
-            customer.setId(personalId);
-
             System.out.println("Registration Completed");
             CustomerFileProcessor.add(customer);
         }

@@ -2,7 +2,7 @@ package com.brainscratch.laboratory.customerapp;
 import java.util.Scanner;
 
 public class LoginDialogue {
-
+    // because we should use the same scanner for all the application
     Scanner scanner;
     public LoginDialogue(Scanner scanner) {
         this.scanner = scanner;

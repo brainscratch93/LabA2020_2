@@ -8,15 +8,15 @@ public class CustomerApp {
 
     public static void main(String[] args) throws IOException {
 
-        CustomerFileProcessor processor = new CustomerFileProcessor();
 
         try (Scanner scanner = new Scanner(System.in)) {
 
-            System.out.print(" Welcome to Customer App, type one of the following numbers to proceed : ");
+            System.out.print(" Welcome to Customer App, type one of the following numbers to proceed : \n" );
             String userID = null;
+            // for the autentification of user.
             int choice = 0;
             while (choice != 8) {
-                System.out.println("1- Sign Up");
+                System.out.println("\n1- Sign Up");
                 System.out.println("2- Sign In");
                 System.out.println("3- Search restaurant by Municipality");
                 System.out.println("4- Search restaurant by Name");
@@ -41,7 +41,7 @@ public class CustomerApp {
                 } else if (choice == 7) {
                     new SearchingDialogue(scanner,userID).searchByID();
                 } else if (choice < 1 | choice > 8) {
-                    System.out.println("Invalid Value, try write a number between 1 and 7");
+                    System.out.println("Invalid Value, try write a number between 1 and 8");
                 } else if(choice == 8) {
                     System.out.println("Goodbye");
                 }

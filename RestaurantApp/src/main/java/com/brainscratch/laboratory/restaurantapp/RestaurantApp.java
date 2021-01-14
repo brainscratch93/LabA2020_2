@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class RestaurantApp {
     public static void main(String[] args) {
 
-        RestaurantFileProcessor processor = new RestaurantFileProcessor();
-
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.print(" Welcome to Restaurant Manager");
 

@@ -16,7 +16,7 @@ public class RestaurantFileProcessor {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            File json = Paths.get("./restaurants.json").toFile();
+            File json = Paths.get("./EatAdvisor.Dati").toFile();
             if (!json.exists()) {
                 json.createNewFile();
             }
@@ -38,7 +38,7 @@ public class RestaurantFileProcessor {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./restaurants.json").toFile(), restaurants);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./EatAdvisor.Dati").toFile(), restaurants);
         } catch (IOException e) {
             System.err.println(e);
             throw new IllegalStateException("Something went wrong during JSON updating", e);
@@ -68,21 +68,6 @@ public class RestaurantFileProcessor {
             if (restaurant.getId() == data.get(i).getId()) {
                 data.remove(i);
                 data.add(i, restaurant);
-
-                break;
-            }
-        }
-
-        save(restaurants);
-    }
-
-    public static void remove(Restaurant restaurant) {
-        RestaurantList restaurants = getAll();
-
-        List<Restaurant> data = restaurants.getRestaurants();
-        for (int i = 0; i < data.size() ; i++) {
-            if (restaurant.getId() == data.get(i).getId()) {
-                data.remove(i);
 
                 break;
             }
@@ -156,18 +141,6 @@ public class RestaurantFileProcessor {
             return result;
     }
 
-    public static List<Restaurant> selectRestaurant(Restaurant restaurant, String municipalityName) {
-        RestaurantList restaurants = getAll();
-        List<Restaurant> data = restaurants.getRestaurants();
-        List<Restaurant> list = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (restaurant.getName() == data.get(i).getName() | data.get(i).getAddress().contains(municipalityName) & restaurant.getType() == data.get(i).getType())
-                System.out.println((i + 1) + " - " + list.get(i).getName());
-        }
-
-        return list;
-    }
-
     public static void viewRestaurantInfo(Restaurant restaurant) {
         String star = "***********";
         String plus = "+++++++++++";
@@ -185,9 +158,9 @@ public class RestaurantFileProcessor {
             } else {
                 for(Review review : restaurant.getReviews()) {
                     System.out.println(plus);
-                    System.out.println("*** rating: " + review.getRating() + "***");
-                    System.out.println("*** comment: " + review.getComment() + "***");
-                    System.out.println("*** author: " + review.getAuthor() + "***");
+                    System.out.println("*** rating: " + review.getRating() + " ***");
+                    System.out.println("*** comment: " + review.getComment() + " ***");
+                    System.out.println("*** author: " + review.getAuthor() + " ***");
                     System.out.println(plus);
                 }
             }

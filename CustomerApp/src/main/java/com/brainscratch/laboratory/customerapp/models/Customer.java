@@ -19,12 +19,6 @@ public class Customer {
         this.id = id;
     }
 
-
-
-
-
-
-
     public String getName() {
         return name;
     }
@@ -87,7 +81,9 @@ public class Customer {
         this.password = password;
         return this;
     }
-
+    // it makes the String representation of the object Customer. Since i'm using an object i need to use
+    // @override toString because if i would have use only SystemOut.println it would have printed
+    // the memory allocation of the object,not the actual object in string
     @Override
     public String toString() {
         return "Customer{" +

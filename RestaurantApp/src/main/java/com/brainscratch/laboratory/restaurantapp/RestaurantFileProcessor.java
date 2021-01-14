@@ -38,6 +38,10 @@ public class RestaurantFileProcessor {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
+            File json = Paths.get("./EatAdvisor.Dati").toFile();
+            if (!json.exists()) {
+                json.createNewFile();
+            }
             mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./EatAdvisor.Dati").toFile(), restaurants);
         } catch (IOException e) {
             System.err.println(e);

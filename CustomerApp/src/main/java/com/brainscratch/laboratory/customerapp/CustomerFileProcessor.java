@@ -40,7 +40,11 @@ public class CustomerFileProcessor {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("./Users.json").toFile(), customers);
+            File json = Paths.get("./Users.json").toFile();
+            if (!json.exists()) {
+                json.createNewFile();
+            }
+            mapper.writerWithDefaultPrettyPrinter().writeValue(json,customers);
         } catch (IOException e) {
             throw new IllegalStateException("Something went wrong during JSON updating", e);
         }
